@@ -3,14 +3,17 @@
 title = "Zolarwind"
 description = "A localizable blog theme using Tailwind CSS for styling and KaTex for math"
 template = "theme.html"
-date = 2024-05-27T05:58:59Z
+date = 2024-12-09T16:12:52+01:00
+
+[taxonomies]
+theme-tags = []
 
 [extra]
-created = 2024-05-27T05:58:59Z
-updated = 2024-05-27T05:58:59Z
+created = 2024-12-09T16:12:52+01:00
+updated = 2024-12-09T16:12:52+01:00
 repository = "https://github.com/thomasweitzel/zolarwind.git"
 homepage = "https://github.com/thomasweitzel/zolarwind"
-minimum_version = "0.18.0"
+minimum_version = "0.19.1"
 license = "MIT"
 demo = "https://pureandroid.com"
 
@@ -53,7 +56,7 @@ you can choose your preferred language setting for a consistent blog experience.
 - Configuration
 - Front Matter
 - Localization
-- Integrating in theme folder
+- Integrating the theme folder
 - Development
 - Remarks
 - Contributing
@@ -70,15 +73,17 @@ The site uses the German language.
 
 ## Prerequisites
 
-In order to use the theme, you need some software pre-installed:
+To use the theme, you need some software pre-installed:
 
 - [Git](https://git-scm.com/downloads), Required for version control.
 
 - [Node](https://nodejs.org/en/download), an open-source, cross-platform JavaScript runtime environment.
+  Node is optional and only needed if you want to change the CSS in `css/main.css`.
 
 - [Zola](https://github.com/getzola/zola/releases), a fast static site generator.
 
-- an editor or integrated development environment of your choice - I use [JetBrains IDEA](https://www.jetbrains.com/idea/download),
+- an editor or integrated development environment of your choice —
+  I use [JetBrains IDEA](https://www.jetbrains.com/idea/download),
   an IDE that makes development a more productive and enjoyable experience. 
 
 ---
@@ -89,7 +94,7 @@ In order to use the theme, you need some software pre-installed:
    Or download it from `https://github.com/thomasweitzel/zolarwind`.
 
 2. Make adjustments to the `config.toml` file as needed.
-   In order to run the theme as a standalone site, you need to adjust the `base_url` to your domain.
+   To run the theme as a standalone site, you need to adjust the `base_url` to your domain.
    If you want to try it out on your local machine, you can leave it as is.
    Just run `zola serve` from the theme's root directory. 
 
@@ -102,7 +107,7 @@ Here's a breakdown of the configuration settings tailored for this theme:
 
 ### Basic Configuration:
 
-- **base_url**: Specifies the URL the site will be built for.
+- **base_url**: Specify the URL the site will be built for.
   In this case, the site will be built for `https://example.org`.
   Adjust this to your own domain.
 
@@ -114,7 +119,7 @@ Here's a breakdown of the configuration settings tailored for this theme:
   As of now, German (`de`) is available in the `i18n` directory.
 
 - **theme**: The theme used for the site.
-  The provided line is commented out, indicating that the themes files are taken from the `template` directory.
+  The provided line is commented out, indicating that the theme's files are taken from the `template` directory.
   If you move the theme to the `themes/zolarwind` directory, use `zolarwind` for this entry.
 
 - **build_search_index**: If set to `true`, a search index will be built from the pages and section content for the `default_language`.
@@ -138,35 +143,44 @@ Here's a breakdown of the configuration settings tailored for this theme:
 
 The `[extra]` section is where you can place any custom variables you want to be accessible in your templates.
 
-- **title**: The title of the site.
-  Here, it's set to "Zolarwind".
+- **title**: Required.
+  The title of the site.
+  Here, it's set to "Zolarwind."
 
-- **generator**: Optional.
-  Specifies the generator used for creating the static website.
-  This site is generated using `Zola v0.18.0`.
-
-- **path_language_resources**: The path to the directory containing language resource files.
+- **path_language_resources**: Required.
+  The path to the directory containing language resource files.
   In this config, it's set to `i18n/`.
   If you move the theme to the `themes/zolarwind` directory, use `themes/zolarwind/i18n/` for this entry.
 
-- **favicon_svg**: Provides a path to the site's favicon in SVG format.
+- **generator**: Optional.
+  Specify the generator used for creating the static website.
+  This site is generated using `Zola v0.19.0`.
+
+- **favicon_svg**: Optional.
+  Provides a path to the site's favicon in SVG format.
   The provided path points to `/img/yin-yang.svg`.
 
-- **copyright**: A template for the copyright notice.
+- **copyright**: Optional.
+  A template for the copyright notice.
   It includes a placeholder `{year}` which is dynamically replaced with the current year of your `zola build` run.
 
-- **site_description**: A brief description displayed on the site's banner.
+- **site_description**: Optional.
+  A brief description is displayed on the site's banner.
 
-- **quote**: A structure defining a quote and its author.
+- **quote**: Optional.
+  A structure defining a quote and its author.
   This quote is from Yoda.
 
-- **menu_pages**: An array of main navigation menu items.
+- **menu_pages**: Optional.
+  An array of main navigation menu items.
   Each item has a `title` and a `url`.
 
-- **footer_pages**: An array of pages that will appear in the site's footer.
+- **footer_pages**: Optional.
+  An array of pages that will appear in the site's footer.
   Each item has a `title` and a `url`.
 
-- **social_links**: An array of social media links.
+- **social_links**: Optional.
+  An array of social media links.
   Each link has a name, a boolean indicating if it's enabled, a URL, and an SVG icon.
 
 ---
@@ -177,7 +191,7 @@ For blog posts (Markdown files in folder `content/blog`), this theme uses a dire
 This way, I have all resources for a post in one place.
 It can include images, videos, and other files.
 
-Each post is associated with an image, that is displayed on the blog's main page and on the posts detail page.
+Each post is associated with an image displayed on the blog's main page and on the post's detail page.
 If you do not provide an image under `extra.image`, a default image is used instead.
 
 - **date**: the date of the blog posts, e.g. `2020-06-11`.
@@ -186,7 +200,7 @@ If you do not provide an image under `extra.image`, a default image is used inst
  
 - **description**: the description of the blog posts. It is used as a summary on the blog's main page.
  
-- **authors**: an optional array of all the posts authors, e.g. `["Thomas Weitzel"]`.
+- **authors**: an optional array of all the post's authors, e.g. `["Thomas Weitzel"]`.
   You can leave it empty, but then the first author will show up as `Unknown` in the feed (`atom.xml`).
 
 - **taxonomies**: only the optional `tags` taxonomy is used by this theme.
@@ -204,7 +218,7 @@ If you do not provide an image under `extra.image`, a default image is used inst
 
 - **extra.image**: an optional image for the post.
   If omitted, a default image is used instead.
-  The image is displayed on the blog's main page and on the posts detail page.
+  The image is displayed on the blog's main page and on the post's detail page.
 
 ---
 
@@ -223,7 +237,7 @@ To localize your blog with this theme:
    If your language is not supported yet, just create a new resource file with your translations.
    Use the file `en.toml` as a template for your own translations.
    Use the correct language code for the file name, e.g. `eo.toml` for Esperanto.
-   Only languages that read from left-to-right (ltr) are supported by this theme.
+   This theme supports only languages that read from left-to-right (ltr).
 
 2. The theme will automatically display all theme-specific string resources in the chosen language.
 
@@ -235,7 +249,7 @@ If you need to define your own date format, look [here](https://docs.rs/chrono/l
 
 ---
 
-## Integrating in theme folder
+## Integrating the theme folder
 
 This project is structured as a stand-alone Zola site.
 This section is for those who might want to integrate the theme into an existing Zola website.
@@ -286,7 +300,7 @@ The generation process can be triggered with a script in the `package.json` file
 **You only need to adjust and run the script** in `package.json` if you make changes to the theme's template files or use new Tailwind CSS classes directly in your content files.
 Since the source file `css/main.css` has moved to the directory `themes/zolarwind/css/main.css`, we need to adjust the script in `package.json` accordingly.
 
-This is how the relevant part of it looks like for the stand-alone site:
+This is what the relevant part of it looks like for the stand-alone site:
 
 ```json
 "scripts": {
@@ -324,7 +338,7 @@ path_language_resources = "themes/zolarwind/i18n/"
 ## Development
 
 If you want to adjust the CSS of the theme to your needs, you will need to edit the files in the `templates` and `css` directories.
-While you do this, you should make sure that the CSS file `static/css/generated.css` is up-to-date.
+While you do this, you should make sure that the CSS file `static/css/generated.css` is up to date.
 This file is generated from the file `css/main.css`, and all the files that are configured as a pattern in `tailwind.config.js`:
 
 - `css/main.css`
@@ -336,31 +350,31 @@ This file is generated from the file `css/main.css`, and all the files that are 
 - `content/**/*.md`
 
 So whenever one of these files changes, you need to run the script `css:build` from the `package.json` file.
-To accomplish this, you need to have `Node.js` and all dependencies from `package.json` installed (with `npm install`).
+To achieve this, you need to have `Node.js` and all dependencies from `package.json` installed (with `npm install`).
 Then you can run the script with `npm run css:watch`.
 It monitors all files mentioned above and triggers the CSS generation whenever a relevant file changes.
-This ensures, that the file `static/css/generated.css` is always up-to-date.
+This ensures, that the file `static/css/generated.css` is always up to date.
 
-I recommend to have two terminals open.
-In one terminal, run `zola serve` to start the Zola server.
+I recommend having two terminals open.
+In one terminal, run `npm run server` - or just `zola serve` - to start the Zola server.
 In the other terminal, run `npm run css:watch` to start the CSS generation whenever a relevant file changes.
 
-That way, your local web browser will automatically reload  the page with the updated CSS whenever you change a file.
+That way, your local web browser will automatically reload the page with the updated CSS whenever you change a file.
 
 ---
 
 ## Remarks
 
-### Typography for markdown
+### Typography for Markdown
 
-I'm not using `@tailwindcss/typography` for styling of markdown files.
+I'm not using `@tailwindcss/typography` for styling of Markdown files.
 I don't like how it looks.
 Instead, I use `@apply` in the `css/main.css` file.
 The `@apply` directive in Tailwind CSS enables you to compose utility classes into custom CSS classes.
-This makes it possible to apply multiple utility styles within a single class, making it efficient to style markdown content.
+This makes it possible to apply multiple utility styles within a single class, making it efficient to style Markdown content.
 
 This approach has pros and cons.
-But it gives me fine-grained control over how the end result looks like.
+But it gives me fine-grained control over how the result looks like.
 While it is time-consuming, I prefer this solution over the `@tailwindcss/typography` plugin.
  
 Yes, I'm reinventing the wheel here, because for common typographic patterns, I'm just recreating what's already provided by the typography plugin.
@@ -377,7 +391,7 @@ Using KaTeX (or any other library) by serving it from a Content Delivery Network
 
 - **Cookies**: Many CDNs set cookies for various reasons, including analytics or performance optimizations.
   These cookies can track users across different websites that use the same CDN, potentially infringing on their privacy rights.
-  By hosting KaTeX on your domain, you have full control over the cookies set and can ensure compliance with GDPR.
+  By hosting KaTeX on your domain, you have full control over cookies and can ensure compliance with GDPR.
 
 - **Consent**: If you're using a CDN that sets cookies or collects data, you might need to get explicit user consent before loading resources from that CDN.
   This can complicate user experience and lead to a reduced site performance for users who opt-out.
@@ -399,7 +413,7 @@ If you see areas of improvement or want to add features, please submit a PR.
 
 I'm especially interested in more translations.
 See folder `i18n` for what's available and what is not.
-Just use the file `en.toml` as a template for your own translations.
+Use the file `en.toml` as a template for your own translations.
 
 ---
 

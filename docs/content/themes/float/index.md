@@ -3,11 +3,14 @@
 title = "Float"
 description = "An elegant blog theme"
 template = "theme.html"
-date = 2024-05-27T05:58:59Z
+date = 2023-03-21T15:29:41Z
+
+[taxonomies]
+theme-tags = []
 
 [extra]
-created = 2024-05-27T05:58:59Z
-updated = 2024-05-27T05:58:59Z
+created = 2023-03-21T15:29:41Z
+updated = 2023-03-21T15:29:41Z
 repository = "https://gitlab.com/float-theme/float.git"
 homepage = "https://gitlab.com/float-theme/float/"
 minimum_version = "0.15.3"

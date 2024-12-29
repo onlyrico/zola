@@ -47,15 +47,6 @@ Grab the latest `.deb` for your Debian version then simply run:
 $ sudo dpkg -i zola_<version>_amd64_debian_<debian_version>.deb
 ```
 
-### Fedora
-
-On Fedora, Zola is available via [COPR](https://fedoraproject.org/wiki/Category:Copr).
-
-```sh
-$ sudo dnf copr enable fz0x1/zola
-$ sudo dnf install zola
-```
-
 ### Gentoo
 
 Zola is available via [GURU](https://wiki.gentoo.org/wiki/Project:GURU).
@@ -88,6 +79,26 @@ Zola is available in the official package repository.
 
 ```sh
 $ doas pkg_add zola
+```
+
+### openSUSE
+
+#### openSUSE Tumbleweed
+
+Zola is [available](https://software.opensuse.org/package/zola?baseproject=ALL) in the official openSUSE Tumbleweed main OSS repository.
+
+```sh
+$ sudo zypper install zola
+```
+
+#### openSUSE Leap
+
+Zola is [available](https://software.opensuse.org/package/zola?baseproject=ALL) in the official experimental _utilities_ repository.
+
+```sh
+$ sudo zypper addrepo https://download.opensuse.org/repositories/utilities/15.6/utilities.repo
+$ sudo zypper refresh
+$ sudo zypper install zola
 ```
 
 ### pkgsrc
@@ -155,7 +166,7 @@ jobs:
     steps:
       - uses: taiki-e/install-action@v2
         with:
-          tool: zola@0.17.1
+          tool: zola@0.19.1
       # ...
 ```
 
@@ -167,26 +178,26 @@ Zola is available on [the GitHub registry](https://github.com/getzola/zola/pkgs/
 It has no `latest` tag, you will need to specify a [specific version to pull](https://github.com/getzola/zola/pkgs/container/zola/versions).
 
 ```sh
-$ docker pull ghcr.io/getzola/zola:v0.17.1
+$ docker pull ghcr.io/getzola/zola:v0.19.1
 ```
 
 #### Build
 
 ```sh
-$ docker run -u "$(id -u):$(id -g)" -v $PWD:/app --workdir /app ghcr.io/getzola/zola:v0.17.1 build
+$ docker run -u "$(id -u):$(id -g)" -v $PWD:/app --workdir /app ghcr.io/getzola/zola:v0.19.1 build
 ```
 
 #### Serve
 
 ```sh
-$ docker run -u "$(id -u):$(id -g)" -v $PWD:/app --workdir /app -p 8080:8080 ghcr.io/getzola/zola:v0.17.1 serve --interface 0.0.0.0 --port 8080 --base-url localhost
+$ docker run -u "$(id -u):$(id -g)" -v $PWD:/app --workdir /app -p 8080:8080 ghcr.io/getzola/zola:v0.19.1 serve --interface 0.0.0.0 --port 8080 --base-url localhost
 ```
 
 You can now browse http://localhost:8080.
 
 > To enable live browser reload, you may have to bind to port 1024. Zola searches for an open
 > port between 1024 and 9000 for live reload. The new docker command would be
-> `$ docker run -u "$(id -u):$(id -g)" -v $PWD:/app --workdir /app -p 8080:8080 -p 1024:1024 ghcr.io/getzola/zola:v0.17.1 serve --interface 0.0.0.0 --port 8080 --base-url localhost`
+> `$ docker run -u "$(id -u):$(id -g)" -v $PWD:/app --workdir /app -p 8080:8080 -p 1024:1024 ghcr.io/getzola/zola:v0.19.1 serve --interface 0.0.0.0 --port 8080 --base-url localhost`
 
 #### Multi-stage build
 
@@ -194,7 +205,7 @@ Since there is no shell in the Zola docker image, if you want to use it from ins
 exec form of `RUN`, like:
 
 ```Dockerfile
-FROM ghcr.io/getzola/zola:v0.17.1 as zola
+FROM ghcr.io/getzola/zola:v0.19.1 as zola
 
 COPY . /project
 WORKDIR /project

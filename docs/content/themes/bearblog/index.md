@@ -3,16 +3,19 @@
 title = "Bear"
 description = "Bear blog theme"
 template = "theme.html"
-date = 2024-05-27T05:58:59Z
+date = 2024-08-18T10:29:08+02:00
+
+[taxonomies]
+theme-tags = []
 
 [extra]
-created = 2024-05-27T05:58:59Z
-updated = 2024-05-27T05:58:59Z
+created = 2024-08-18T10:29:08+02:00
+updated = 2024-08-18T10:29:08+02:00
 repository = "https://codeberg.org/alanpearce/zola-bearblog.git"
 homepage = "https://codeberg.org/alanpearce/zola-bearblog"
 minimum_version = "0.4.0"
 license = "MIT"
-demo = "https://zola-bearblog.netlify.app/"
+demo = "https://zola-bearblog.vercel.app/"
 
 [extra.author]
 name = "Alan Pearce"
@@ -29,7 +32,11 @@ homepage = "https://alanpearce.eu"
 
 ## Demo
 
-For a current & working demo of this theme, please check out <https://zola-bearblog.netlify.app/> 🎯.
+This theme has multiple demo sites, to provide examples of how to set up deployment
+- [Vercel](https://zola-bearblog.vercel.app/)
+- [Netlify](https://zola-bearblog.netlify.app/)
+- [Gitlab Pages](https://alanpearce.gitlab.io/zola-bearblog)
+- [Cloudflare Pages](https://zola-bearblog.pages.dev/)
 
 ## Screenshot
 
@@ -68,7 +75,7 @@ Create an array in `extra` with a key of `main_menu`. `url` is passed to [`get_u
 ```toml
 [[extra.main_menu]]
 name = "Home"
-url = "/"
+url = "@/_index.md"
 
 [[extra.main_menu]]
 name = "Bear"

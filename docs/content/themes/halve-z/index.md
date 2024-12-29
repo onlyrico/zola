@@ -3,11 +3,14 @@
 title = "halve-z"
 description = "Retro two-column theme"
 template = "theme.html"
-date = 2024-05-27T05:58:59Z
+date = 2024-11-24T23:48:33-08:00
+
+[taxonomies]
+theme-tags = []
 
 [extra]
-created = 2024-05-27T05:58:59Z
-updated = 2024-05-27T05:58:59Z
+created = 2024-11-24T23:48:33-08:00
+updated = 2024-11-24T23:48:33-08:00
 repository = "https://github.com/charlesrocket/halve-z.git"
 homepage = "https://github.com/charlesrocket/halvez"
 minimum_version = "0.18.0"
@@ -33,6 +36,7 @@ This is a _retro_ port of [Halve](https://github.com/TaylanTatli/Halve) (**Jekyl
 * search
 * taxonomies
 * PWA (dynamic cache/offline mode)
+* notifications
 * auto color schemes
 * ToC
 * pagination
